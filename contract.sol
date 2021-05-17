@@ -1,125 +1,77 @@
-/**
- *Submitted for verification at BscScan.com on 2021-03-27
- */
+// Welcome To PilsToken!
+// Community driven Token for every Pils lover!
+// 5% Tax on every transaction will be distributed back to Holders
+ 
+ // SPDX-License-Identifier: Unlicensed
 
-// SPDX-License-Identifier: MIT
+ /**
+  * ██████╗ ██╗██╗     ███████╗████████╗ ██████╗ ██╗  ██╗███████╗███╗   ██╗
+  * ██╔══██╗██║██║     ██╔════╝╚══██╔══╝██╔═══██╗██║ ██╔╝██╔════╝████╗  ██║
+  * ██████╔╝██║██║     ███████╗   ██║   ██║   ██║█████╔╝ █████╗  ██╔██╗ ██║
+  * ██╔═══╝ ██║██║     ╚════██║   ██║   ██║   ██║██╔═██╗ ██╔══╝  ██║╚██╗██║
+  * ██║     ██║███████╗███████║   ██║   ╚██████╔╝██║  ██╗███████╗██║ ╚████║
+  * ╚═╝     ╚═╝╚══════╝╚══════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝
+  *         
+  *                                 .sssssssss.
+  *                         .sssssssssssssssssss
+  *                       sssssssssssssssssssssssss
+  *                      ssssssssssssssssssssssssssss
+  *                       @@sssssssssssssssssssssss@ss
+  *                       |s@@@@sssssssssssssss@@@@s|s
+  *                _______|sssss@@@@@sssss@@@@@sssss|s
+  *              /         sssssssss@sssss@sssssssss|s
+  *             /  .------+.ssssssss@sssss@ssssssss.|
+  *            /  /       |...sssssss@sss@sssssss...|
+  *           |  |        |.......sss@sss@ssss......|
+  *           |  |        |..........s@ss@sss.......|
+  *           |  |        |...........@ss@..........|
+  *            \  \       |............ss@..........|
+  *             \  '------+...........ss@...........|
+  *              \________ .........................|
+  *                       |.........................|
+  *                      /...........................\
+  *                     |.............................|
+  *                        |.......................|
+  *                            |...............|
+  *
+  *                                                                        $$\                         
+  *                                                                        $$ |                        
+  *  $$$$$$$\  $$$$$$\ $$\    $$\  $$$$$$\        $$\  $$\  $$\  $$$$$$\ $$$$$$\    $$$$$$\   $$$$$$\  
+  * $$  _____| \____$$\\$$\  $$  |$$  __$$\       $$ | $$ | $$ | \____$$\\_$$  _|  $$  __$$\ $$  __$$\ 
+  * \$$$$$$\   $$$$$$$ |\$$\$$  / $$$$$$$$ |      $$ | $$ | $$ | $$$$$$$ | $$ |    $$$$$$$$ |$$ |  \__|
+  *  \____$$\ $$  __$$ | \$$$  /  $$   ____|      $$ | $$ | $$ |$$  __$$ | $$ |$$\ $$   ____|$$ |      
+  * $$$$$$$  |\$$$$$$$ |  \$  /   \$$$$$$$\       \$$$$$\$$$$  |\$$$$$$$ | \$$$$  |\$$$$$$$\ $$ |      
+  * \_______/  \_______|   \_/     \_______|       \_____\____/  \_______|  \____/  \_______|\__|      
+  *                                                                                                    
+  *                                                                                                    
+  *                                                                                                    
+  *       $$\           $$\           $$\             $$\                                              
+  *       $$ |          \__|          $$ |            $$ |                                             
+  *  $$$$$$$ | $$$$$$\  $$\ $$$$$$$\  $$ |  $$\       $$$$$$$\   $$$$$$\   $$$$$$\   $$$$$$\           
+  * $$  __$$ |$$  __$$\ $$ |$$  __$$\ $$ | $$  |      $$  __$$\ $$  __$$\ $$  __$$\ $$  __$$\          
+  * $$ /  $$ |$$ |  \__|$$ |$$ |  $$ |$$$$$$  /       $$ |  $$ |$$$$$$$$ |$$$$$$$$ |$$ |  \__|         
+  * $$ |  $$ |$$ |      $$ |$$ |  $$ |$$  _$$<        $$ |  $$ |$$   ____|$$   ____|$$ |               
+  * \$$$$$$$ |$$ |      $$ |$$ |  $$ |$$ | \$$\       $$$$$$$  |\$$$$$$$\ \$$$$$$$\ $$ |               
+  *  \_______|\__|      \__|\__|  \__|\__|  \__|      \_______/  \_______| \_______|\__|               
+  *
+  * 
+  *
+  */
 
-pragma solidity ^0.8.0;
+pragma solidity ^0.7.6;
 
-/*
- * @dev Provides information about the current execution context, including the
- * sender of the transaction and its data. While these are generally available
- * via msg.sender and msg.data, they should not be accessed in such a direct
- * manner, since when dealing with meta-transactions the account sending and
- * paying for execution may not be the actual sender (as far as an application
- * is concerned).
- *
- * This contract is only required for intermediate, library-like contracts.
- */
 abstract contract Context {
-    function _msgSender() internal view virtual returns (address) {
+    function _msgSender() internal view virtual returns (address payable) {
         return msg.sender;
     }
 
-    function _msgData() internal view virtual returns (bytes calldata) {
+    function _msgData() internal view virtual returns (bytes memory) {
         this; // silence state mutability warning without generating bytecode - see https://github.com/ethereum/solidity/issues/2691
         return msg.data;
     }
 }
 
-pragma solidity ^0.8.0;
-
-/**
- * @dev Contract module which provides a basic access control mechanism, where
- * there is an account (an owner) that can be granted exclusive access to
- * specific functions.
- *
- * By default, the owner account will be the one that deploys the contract. This
- * can later be changed with {transferOwnership}.
- *
- * This module is used through inheritance. It will make available the modifier
- * `onlyOwner`, which can be applied to your functions to restrict their use to
- * the owner.
- */
-abstract contract Ownable is Context {
-    address private _owner;
-
-    event OwnershipTransferred(
-        address indexed previousOwner,
-        address indexed newOwner
-    );
-
-    /**
-     * @dev Initializes the contract setting the deployer as the initial owner.
-     */
-    constructor() {
-        address msgSender = _msgSender();
-        _owner = msgSender;
-        emit OwnershipTransferred(address(0), msgSender);
-    }
-
-    /**
-     * @dev Returns the address of the current owner.
-     */
-    function owner() public view virtual returns (address) {
-        return _owner;
-    }
-
-    /**
-     * @dev Throws if called by any account other than the owner.
-     */
-    modifier onlyOwner() {
-        require(owner() == _msgSender(), "Ownable: caller is not the owner");
-        _;
-    }
-
-    /**
-     * @dev Leaves the contract without owner. It will not be possible to call
-     * `onlyOwner` functions anymore. Can only be called by the current owner.
-     *
-     * NOTE: Renouncing ownership will leave the contract without an owner,
-     * thereby removing any functionality that is only available to the owner.
-     */
-    function renounceOwnership() public virtual onlyOwner {
-        emit OwnershipTransferred(_owner, address(0));
-        _owner = address(0);
-    }
-
-    /**
-     * @dev Transfers ownership of the contract to a new account (`newOwner`).
-     * Can only be called by the current owner.
-     */
-    function transferOwnership(address newOwner) public virtual onlyOwner {
-        require(
-            newOwner != address(0),
-            "Ownable: new owner is the zero address"
-        );
-        emit OwnershipTransferred(_owner, newOwner);
-        _owner = newOwner;
-    }
-}
-
-pragma solidity ^0.8.0;
-
-/**
- * @dev Interface of the BEP standard.
- */
-interface IBEP20 {
-    /**
-     * @dev Returns the token name.
-     */
-    function name() external view returns (string memory);
-
-    /**
-     * @dev Returns the token symbol.
-     */
-    function symbol() external view returns (string memory);
-
-    /**
-     * @dev Returns the token decimals.
-     */
-    function decimals() external view returns (uint8);
-
+interface IERC20 {
     /**
      * @dev Returns the amount of tokens in existence.
      */
@@ -131,35 +83,22 @@ interface IBEP20 {
     function balanceOf(address account) external view returns (uint256);
 
     /**
-     * @dev Returns the token owner.
-     */
-    function getOwner() external view returns (address);
-
-    /**
      * @dev Moves `amount` tokens from the caller's account to `recipient`.
      *
      * Returns a boolean value indicating whether the operation succeeded.
      *
      * Emits a {Transfer} event.
      */
-    function transfer(address recipient, uint256 amount)
-        external
-        returns (bool);
+    function transfer(address recipient, uint256 amount) external returns (bool);
 
     /**
-     * @dev Moves `amount` tokens from `sender` to `recipient` using the
-     * allowance mechanism. `amount` is then deducted from the caller's
-     * allowance.
+     * @dev Returns the remaining number of tokens that `spender` will be
+     * allowed to spend on behalf of `owner` through {transferFrom}. This is
+     * zero by default.
      *
-     * Returns a boolean value indicating whether the operation succeeded.
-     *
-     * Emits a {Transfer} event.
+     * This value changes when {approve} or {transferFrom} are called.
      */
-    function transferFrom(
-        address sender,
-        address recipient,
-        uint256 amount
-    ) external returns (bool);
+    function allowance(address owner, address spender) external view returns (uint256);
 
     /**
      * @dev Sets `amount` as the allowance of `spender` over the caller's tokens.
@@ -178,16 +117,15 @@ interface IBEP20 {
     function approve(address spender, uint256 amount) external returns (bool);
 
     /**
-     * @dev Returns the remaining number of tokens that `spender` will be
-     * allowed to spend on behalf of `owner` through {transferFrom}. This is
-     * zero by default.
+     * @dev Moves `amount` tokens from `sender` to `recipient` using the
+     * allowance mechanism. `amount` is then deducted from the caller's
+     * allowance.
      *
-     * This value changes when {approve} or {transferFrom} are called.
+     * Returns a boolean value indicating whether the operation succeeded.
+     *
+     * Emits a {Transfer} event.
      */
-    function allowance(address _owner, address spender)
-        external
-        view
-        returns (uint256);
+    function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
 
     /**
      * @dev Emitted when `value` tokens are moved from one account (`from`) to
@@ -201,596 +139,152 @@ interface IBEP20 {
      * @dev Emitted when the allowance of a `spender` for an `owner` is set by
      * a call to {approve}. `value` is the new allowance.
      */
-    event Approval(
-        address indexed owner,
-        address indexed spender,
-        uint256 value
-    );
+    event Approval(address indexed owner, address indexed spender, uint256 value);
 }
 
-pragma solidity ^0.8.0;
-
-/**
- * @dev Implementation of the {IBEP20} interface.
- *
- * This implementation is agnostic to the way tokens are created. This means
- * that a supply mechanism has to be added in a derived contract using {_mint}.
- *
- * We have followed general OpenZeppelin guidelines: functions revert instead
- * of returning `false` on failure. This behavior is nonetheless conventional
- * and does not conflict with the expectations of BEP20 applications.
- *
- * Additionally, an {Approval} event is emitted on calls to {transferFrom}.
- * This allows applications to reconstruct the allowance for all accounts just
- * by listening to said events. Other implementations of the EIP may not emit
- * these events, as it isn't required by the specification.
- *
- * Finally, the non-standard {decreaseAllowance} and {increaseAllowance}
- * functions have been added to mitigate the well-known issues around setting
- * allowances. See {IBEP20-approve}.
- */
-contract BEP20 is Ownable, IBEP20 {
-    mapping(address => uint256) private _balances;
-
-    mapping(address => mapping(address => uint256)) private _allowances;
-
-    uint256 private _totalSupply;
-
-    string private _name;
-    string private _symbol;
-    uint8 private _decimals;
-
+library SafeMath {
     /**
-     * @dev Sets the values for {name} and {symbol}, initializes {decimals} with
-     * a default value of 18.
+     * @dev Returns the addition of two unsigned integers, reverting on
+     * overflow.
      *
-     * To select a different value for {decimals}, use {_setupDecimals}.
-     *
-     * All three of these values are immutable: they can only be set once during
-     * construction.
-     */
-    constructor(string memory name_, string memory symbol_) {
-        _name = name_;
-        _symbol = symbol_;
-        _decimals = 18;
-    }
-
-    /**
-     * @dev Returns the name of the token.
-     */
-    function name() public view override returns (string memory) {
-        return _name;
-    }
-
-    /**
-     * @dev Returns the symbol of the token, usually a shorter version of the
-     * name.
-     */
-    function symbol() public view override returns (string memory) {
-        return _symbol;
-    }
-
-    /**
-     * @dev Returns the number of decimals used to get its user representation.
-     * For example, if `decimals` equals `2`, a balance of `505` tokens should
-     * be displayed to a user as `5,05` (`505 / 10 ** 2`).
-     *
-     * Tokens usually opt for a value of 18, imitating the relationship between
-     * Ether and Wei. This is the value {BEP20} uses, unless {_setupDecimals} is
-     * called.
-     *
-     * NOTE: This information is only used for _display_ purposes: it in
-     * no way affects any of the arithmetic of the contract, including
-     * {IBEP20-balanceOf} and {IBEP20-transfer}.
-     */
-    function decimals() public view override returns (uint8) {
-        return _decimals;
-    }
-
-    /**
-     * @dev See {IBEP20-totalSupply}.
-     */
-    function totalSupply() public view override returns (uint256) {
-        return _totalSupply;
-    }
-
-    /**
-     * @dev See {IBEP20-balanceOf}.
-     */
-    function balanceOf(address account) public view override returns (uint256) {
-        return _balances[account];
-    }
-
-    /**
-     * @dev See {IBEP20-getOwner}.
-     */
-    function getOwner() public view override returns (address) {
-        return owner();
-    }
-
-    /**
-     * @dev See {IBEP20-transfer}.
+     * Counterpart to Solidity's `+` operator.
      *
      * Requirements:
      *
-     * - `recipient` cannot be the zero address.
-     * - the caller must have a balance of at least `amount`.
+     * - Addition cannot overflow.
      */
-    function transfer(address recipient, uint256 amount)
-        public
-        virtual
-        override
-        returns (bool)
-    {
-        _transfer(_msgSender(), recipient, amount);
-        return true;
+    function add(uint256 a, uint256 b) internal pure returns (uint256) {
+        uint256 c = a + b;
+        require(c >= a, "SafeMath: addition overflow");
+
+        return c;
     }
 
     /**
-     * @dev See {IBEP20-transferFrom}.
+     * @dev Returns the subtraction of two unsigned integers, reverting on
+     * overflow (when the result is negative).
      *
-     * Emits an {Approval} event indicating the updated allowance. This is not
-     * required by the EIP. See the note at the beginning of {BEP20}.
+     * Counterpart to Solidity's `-` operator.
      *
      * Requirements:
      *
-     * - `sender` and `recipient` cannot be the zero address.
-     * - `sender` must have a balance of at least `amount`.
-     * - the caller must have allowance for ``sender``'s tokens of at least
-     * `amount`.
+     * - Subtraction cannot overflow.
      */
-    function transferFrom(
-        address sender,
-        address recipient,
-        uint256 amount
-    ) public virtual override returns (bool) {
-        _transfer(sender, recipient, amount);
-
-        uint256 currentAllowance = _allowances[sender][_msgSender()];
-        require(
-            currentAllowance >= amount,
-            "BEP20: transfer amount exceeds allowance"
-        );
-        _approve(sender, _msgSender(), currentAllowance - amount);
-
-        return true;
+    function sub(uint256 a, uint256 b) internal pure returns (uint256) {
+        return sub(a, b, "SafeMath: subtraction overflow");
     }
 
     /**
-     * @dev See {IBEP20-approve}.
+     * @dev Returns the subtraction of two unsigned integers, reverting with custom message on
+     * overflow (when the result is negative).
+     *
+     * Counterpart to Solidity's `-` operator.
      *
      * Requirements:
      *
-     * - `spender` cannot be the zero address.
+     * - Subtraction cannot overflow.
      */
-    function approve(address spender, uint256 amount)
-        public
-        virtual
-        override
-        returns (bool)
-    {
-        _approve(_msgSender(), spender, amount);
-        return true;
+    function sub(uint256 a, uint256 b, string memory errorMessage) internal pure returns (uint256) {
+        require(b <= a, errorMessage);
+        uint256 c = a - b;
+
+        return c;
     }
 
     /**
-     * @dev See {IBEP20-allowance}.
-     */
-    function allowance(address owner, address spender)
-        public
-        view
-        virtual
-        override
-        returns (uint256)
-    {
-        return _allowances[owner][spender];
-    }
-
-    /**
-     * @dev Atomically increases the allowance granted to `spender` by the caller.
+     * @dev Returns the multiplication of two unsigned integers, reverting on
+     * overflow.
      *
-     * This is an alternative to {approve} that can be used as a mitigation for
-     * problems described in {IBEP20-approve}.
-     *
-     * Emits an {Approval} event indicating the updated allowance.
+     * Counterpart to Solidity's `*` operator.
      *
      * Requirements:
      *
-     * - `spender` cannot be the zero address.
+     * - Multiplication cannot overflow.
      */
-    function increaseAllowance(address spender, uint256 addedValue)
-        public
-        virtual
-        returns (bool)
-    {
-        _approve(
-            _msgSender(),
-            spender,
-            _allowances[_msgSender()][spender] + addedValue
-        );
-        return true;
+    function mul(uint256 a, uint256 b) internal pure returns (uint256) {
+        // Gas optimization: this is cheaper than requiring 'a' not being zero, but the
+        // benefit is lost if 'b' is also tested.
+        // See: https://github.com/OpenZeppelin/openzeppelin-contracts/pull/522
+        if (a == 0) {
+            return 0;
+        }
+
+        uint256 c = a * b;
+        require(c / a == b, "SafeMath: multiplication overflow");
+
+        return c;
     }
 
     /**
-     * @dev Atomically decreases the allowance granted to `spender` by the caller.
+     * @dev Returns the integer division of two unsigned integers. Reverts on
+     * division by zero. The result is rounded towards zero.
      *
-     * This is an alternative to {approve} that can be used as a mitigation for
-     * problems described in {IBEP20-approve}.
-     *
-     * Emits an {Approval} event indicating the updated allowance.
+     * Counterpart to Solidity's `/` operator. Note: this function uses a
+     * `revert` opcode (which leaves remaining gas untouched) while Solidity
+     * uses an invalid opcode to revert (consuming all remaining gas).
      *
      * Requirements:
      *
-     * - `spender` cannot be the zero address.
-     * - `spender` must have allowance for the caller of at least
-     * `subtractedValue`.
+     * - The divisor cannot be zero.
      */
-    function decreaseAllowance(address spender, uint256 subtractedValue)
-        public
-        virtual
-        returns (bool)
-    {
-        uint256 currentAllowance = _allowances[_msgSender()][spender];
-        require(
-            currentAllowance >= subtractedValue,
-            "BEP20: decreased allowance below zero"
-        );
-        _approve(_msgSender(), spender, currentAllowance - subtractedValue);
-
-        return true;
+    function div(uint256 a, uint256 b) internal pure returns (uint256) {
+        return div(a, b, "SafeMath: division by zero");
     }
 
     /**
-     * @dev Moves tokens `amount` from `sender` to `recipient`.
+     * @dev Returns the integer division of two unsigned integers. Reverts with custom message on
+     * division by zero. The result is rounded towards zero.
      *
-     * This is internal function is equivalent to {transfer}, and can be used to
-     * e.g. implement automatic token fees, slashing mechanisms, etc.
-     *
-     * Emits a {Transfer} event.
+     * Counterpart to Solidity's `/` operator. Note: this function uses a
+     * `revert` opcode (which leaves remaining gas untouched) while Solidity
+     * uses an invalid opcode to revert (consuming all remaining gas).
      *
      * Requirements:
      *
-     * - `sender` cannot be the zero address.
-     * - `recipient` cannot be the zero address.
-     * - `sender` must have a balance of at least `amount`.
+     * - The divisor cannot be zero.
      */
-    function _transfer(
-        address sender,
-        address recipient,
-        uint256 amount
-    ) internal virtual {
-        require(sender != address(0), "BEP20: transfer from the zero address");
-        require(recipient != address(0), "BEP20: transfer to the zero address");
+    function div(uint256 a, uint256 b, string memory errorMessage) internal pure returns (uint256) {
+        require(b > 0, errorMessage);
+        uint256 c = a / b;
+        // assert(a == b * c + a % b); // There is no case in which this doesn't hold
 
-        _beforeTokenTransfer(sender, recipient, amount);
-
-        uint256 senderBalance = _balances[sender];
-        require(
-            senderBalance >= amount,
-            "BEP20: transfer amount exceeds balance"
-        );
-        _balances[sender] = senderBalance - amount;
-        _balances[recipient] += amount;
-
-        emit Transfer(sender, recipient, amount);
+        return c;
     }
 
-    /** @dev Creates `amount` tokens and assigns them to `account`, increasing
-     * the total supply.
+    /**
+     * @dev Returns the remainder of dividing two unsigned integers. (unsigned integer modulo),
+     * Reverts when dividing by zero.
      *
-     * Emits a {Transfer} event with `from` set to the zero address.
+     * Counterpart to Solidity's `%` operator. This function uses a `revert`
+     * opcode (which leaves remaining gas untouched) while Solidity uses an
+     * invalid opcode to revert (consuming all remaining gas).
      *
      * Requirements:
      *
-     * - `to` cannot be the zero address.
+     * - The divisor cannot be zero.
      */
-    function _mint(address account, uint256 amount) internal virtual {
-        require(account != address(0), "BEP20: mint to the zero address");
-
-        _beforeTokenTransfer(address(0), account, amount);
-
-        _totalSupply += amount;
-        _balances[account] += amount;
-        emit Transfer(address(0), account, amount);
+    function mod(uint256 a, uint256 b) internal pure returns (uint256) {
+        return mod(a, b, "SafeMath: modulo by zero");
     }
 
     /**
-     * @dev Destroys `amount` tokens from `account`, reducing the
-     * total supply.
+     * @dev Returns the remainder of dividing two unsigned integers. (unsigned integer modulo),
+     * Reverts with custom message when dividing by zero.
      *
-     * Emits a {Transfer} event with `to` set to the zero address.
+     * Counterpart to Solidity's `%` operator. This function uses a `revert`
+     * opcode (which leaves remaining gas untouched) while Solidity uses an
+     * invalid opcode to revert (consuming all remaining gas).
      *
      * Requirements:
      *
-     * - `account` cannot be the zero address.
-     * - `account` must have at least `amount` tokens.
+     * - The divisor cannot be zero.
      */
-    function _burn(address account, uint256 amount) internal virtual {
-        require(account != address(0), "BEP20: burn from the zero address");
-
-        _beforeTokenTransfer(account, address(0), amount);
-
-        uint256 accountBalance = _balances[account];
-        require(accountBalance >= amount, "BEP20: burn amount exceeds balance");
-        _balances[account] = accountBalance - amount;
-        _totalSupply -= amount;
-
-        emit Transfer(account, address(0), amount);
-    }
-
-    /**
-     * @dev Sets `amount` as the allowance of `spender` over the `owner` s tokens.
-     *
-     * This internal function is equivalent to `approve`, and can be used to
-     * e.g. set automatic allowances for certain subsystems, etc.
-     *
-     * Emits an {Approval} event.
-     *
-     * Requirements:
-     *
-     * - `owner` cannot be the zero address.
-     * - `spender` cannot be the zero address.
-     */
-    function _approve(
-        address owner,
-        address spender,
-        uint256 amount
-    ) internal virtual {
-        require(owner != address(0), "BEP20: approve from the zero address");
-        require(spender != address(0), "BEP20: approve to the zero address");
-
-        _allowances[owner][spender] = amount;
-        emit Approval(owner, spender, amount);
-    }
-
-    /**
-     * @dev Sets {decimals} to a value other than the default one of 18.
-     *
-     * WARNING: This function should only be called from the constructor. Most
-     * applications that interact with token contracts will not expect
-     * {decimals} to ever change, and may work incorrectly if it does.
-     */
-    function _setupDecimals(uint8 decimals_) internal {
-        _decimals = decimals_;
-    }
-
-    /**
-     * @dev Hook that is called before any transfer of tokens. This includes
-     * minting and burning.
-     *
-     * Calling conditions:
-     *
-     * - when `from` and `to` are both non-zero, `amount` of ``from``'s tokens
-     * will be to transferred to `to`.
-     * - when `from` is zero, `amount` tokens will be minted for `to`.
-     * - when `to` is zero, `amount` of ``from``'s tokens will be burned.
-     * - `from` and `to` are never both zero.
-     *
-     * To learn more about hooks, head to xref:ROOT:extending-contracts.adoc#using-hooks[Using Hooks].
-     */
-    function _beforeTokenTransfer(
-        address from,
-        address to,
-        uint256 amount
-    ) internal virtual {}
-}
-
-pragma solidity ^0.8.0;
-
-/**
- * @dev Extension of {BEP20} that allows token holders to destroy both their own
- * tokens and those that they have an allowance for, in a way that can be
- * recognized off-chain (via event analysis).
- */
-abstract contract BEP20Burnable is BEP20 {
-    /**
-     * @dev Destroys `amount` tokens from the caller.
-     *
-     * See {BEP20-_burn}.
-     */
-    function burn(uint256 amount) public virtual {
-        _burn(_msgSender(), amount);
-    }
-
-    /**
-     * @dev Destroys `amount` tokens from `account`, deducting from the caller's
-     * allowance.
-     *
-     * See {BEP20-_burn} and {BEP20-allowance}.
-     *
-     * Requirements:
-     *
-     * - the caller must have allowance for ``accounts``'s tokens of at least
-     * `amount`.
-     */
-    function burnFrom(address account, uint256 amount) public virtual {
-        uint256 currentAllowance = allowance(account, _msgSender());
-        require(
-            currentAllowance >= amount,
-            "BEP20: burn amount exceeds allowance"
-        );
-        _approve(account, _msgSender(), currentAllowance - amount);
-        _burn(account, amount);
+    function mod(uint256 a, uint256 b, string memory errorMessage) internal pure returns (uint256) {
+        require(b != 0, errorMessage);
+        return a % b;
     }
 }
 
-pragma solidity ^0.8.0;
-
-/**
- * @dev Interface of the ERC165 standard, as defined in the
- * https://eips.ethereum.org/EIPS/eip-165[EIP].
- *
- * Implementers can declare support of contract interfaces, which can then be
- * queried by others ({ERC165Checker}).
- *
- * For an implementation, see {ERC165}.
- */
-interface IERC165 {
-    /**
-     * @dev Returns true if this contract implements the interface defined by
-     * `interfaceId`. See the corresponding
-     * https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[EIP section]
-     * to learn more about how these ids are created.
-     *
-     * This function call must use less than 30 000 gas.
-     */
-    function supportsInterface(bytes4 interfaceId) external view returns (bool);
-}
-
-pragma solidity ^0.8.0;
-
-/**
- * @title IBEP20Operable Interface
- * @dev Interface for a Operable Token contract as defined in
- *  https://eips.ethereum.org/EIPS/eip-1363
- */
-interface IBEP20Operable is IBEP20, IERC165 {
-    /**
-     * @notice Transfer tokens from `msg.sender` to another address and then call `onTransferReceived` on receiver
-     * @param recipient address The address which you want to transfer to
-     * @param amount uint256 The amount of tokens to be transferred
-     * @return true unless throwing
-     */
-    function transferAndCall(address recipient, uint256 amount)
-        external
-        returns (bool);
-
-    /**
-     * @notice Transfer tokens from `msg.sender` to another address and then call `onTransferReceived` on receiver
-     * @param recipient address The address which you want to transfer to
-     * @param amount uint256 The amount of tokens to be transferred
-     * @param data bytes Additional data with no specified format, sent in call to `recipient`
-     * @return true unless throwing
-     */
-    function transferAndCall(
-        address recipient,
-        uint256 amount,
-        bytes calldata data
-    ) external returns (bool);
-
-    /**
-     * @notice Transfer tokens from one address to another and then call `onTransferReceived` on receiver
-     * @param sender address The address which you want to send tokens from
-     * @param recipient address The address which you want to transfer to
-     * @param amount uint256 The amount of tokens to be transferred
-     * @return true unless throwing
-     */
-    function transferFromAndCall(
-        address sender,
-        address recipient,
-        uint256 amount
-    ) external returns (bool);
-
-    /**
-     * @notice Transfer tokens from one address to another and then call `onTransferReceived` on receiver
-     * @param sender address The address which you want to send tokens from
-     * @param recipient address The address which you want to transfer to
-     * @param amount uint256 The amount of tokens to be transferred
-     * @param data bytes Additional data with no specified format, sent in call to `recipient`
-     * @return true unless throwing
-     */
-    function transferFromAndCall(
-        address sender,
-        address recipient,
-        uint256 amount,
-        bytes calldata data
-    ) external returns (bool);
-
-    /**
-     * @notice Approve the passed address to spend the specified amount of tokens on behalf of msg.sender
-     * and then call `onApprovalReceived` on spender.
-     * Beware that changing an allowance with this method brings the risk that someone may use both the old
-     * and the new allowance by unfortunate transaction ordering. One possible solution to mitigate this
-     * race condition is to first reduce the spender's allowance to 0 and set the desired value afterwards:
-     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729
-     * @param spender address The address which will spend the funds
-     * @param amount uint256 The amount of tokens to be spent
-     */
-    function approveAndCall(address spender, uint256 amount)
-        external
-        returns (bool);
-
-    /**
-     * @notice Approve the passed address to spend the specified amount of tokens on behalf of msg.sender
-     * and then call `onApprovalReceived` on spender.
-     * Beware that changing an allowance with this method brings the risk that someone may use both the old
-     * and the new allowance by unfortunate transaction ordering. One possible solution to mitigate this
-     * race condition is to first reduce the spender's allowance to 0 and set the desired value afterwards:
-     * https://github.com/ethereum/EIPs/issues/20#issuecomment-263524729
-     * @param spender address The address which will spend the funds
-     * @param amount uint256 The amount of tokens to be spent
-     * @param data bytes Additional data with no specified format, sent in call to `spender`
-     */
-    function approveAndCall(
-        address spender,
-        uint256 amount,
-        bytes calldata data
-    ) external returns (bool);
-}
-
-pragma solidity ^0.8.0;
-
-/**
- * @title IBEP20OperableReceiver Interface
- * @dev Interface for any contract that wants to support transferAndCall or transferFromAndCall
- *  from BEP20Operable token contracts as defined in
- *  https://eips.ethereum.org/EIPS/eip-1363
- */
-interface IBEP20OperableReceiver {
-    /**
-     * @notice Handle the receipt of BEP20Operable tokens
-     * @dev Any BEP20Operable smart contract calls this function on the recipient
-     * after a `transfer` or a `transferFrom`. This function MAY throw to revert and reject the
-     * transfer. Return of other than the magic value MUST result in the
-     * transaction being reverted.
-     * Note: the token contract address is always the message sender.
-     * @param operator address The address which called `transferAndCall` or `transferFromAndCall` function
-     * @param sender address The address which are token transferred from
-     * @param amount uint256 The amount of tokens transferred
-     * @param data bytes Additional data with no specified format
-     * @return `bytes4(keccak256("onTransferReceived(address,address,uint256,bytes)"))` unless throwing
-     */
-    function onTransferReceived(
-        address operator,
-        address sender,
-        uint256 amount,
-        bytes calldata data
-    ) external returns (bytes4);
-}
-
-pragma solidity ^0.8.0;
-
-/**
- * @title IBEP20OperableSpender Interface
- * @dev Interface for any contract that wants to support approveAndCall
- *  from BEP20Operable token contracts as defined in
- *  https://eips.ethereum.org/EIPS/eip-1363
- */
-interface IBEP20OperableSpender {
-    /**
-     * @notice Handle the approval of BEP20Operable tokens
-     * @dev Any BEP20Operable smart contract calls this function on the recipient
-     * after an `approve`. This function MAY throw to revert and reject the
-     * approval. Return of other than the magic value MUST result in the
-     * transaction being reverted.
-     * Note: the token contract address is always the message sender.
-     * @param sender address The address which called `approveAndCall` function
-     * @param amount uint256 The amount of tokens to be spent
-     * @param data bytes Additional data with no specified format
-     * @return `bytes4(keccak256("onApprovalReceived(address,uint256,bytes)"))` unless throwing
-     */
-    function onApprovalReceived(
-        address sender,
-        uint256 amount,
-        bytes calldata data
-    ) external returns (bytes4);
-}
-
-pragma solidity ^0.8.0;
-
-/**
- * @dev Collection of functions related to the address type
- */
 library Address {
     /**
      * @dev Returns true if `account` is a contract.
@@ -810,16 +304,14 @@ library Address {
      * ====
      */
     function isContract(address account) internal view returns (bool) {
-        // This method relies on extcodesize, which returns 0 for contracts in
-        // construction, since the code is only stored at the end of the
-        // constructor execution.
-
-        uint256 size;
+        // According to EIP-1052, 0x0 is the value returned for not-yet created accounts
+        // and 0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470 is returned
+        // for accounts without code, i.e. `keccak256('')`
+        bytes32 codehash;
+        bytes32 accountHash = 0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470;
         // solhint-disable-next-line no-inline-assembly
-        assembly {
-            size := extcodesize(account)
-        }
-        return size > 0;
+        assembly { codehash := extcodehash(account) }
+        return (codehash != accountHash && codehash != 0x0);
     }
 
     /**
@@ -839,17 +331,11 @@ library Address {
      * https://solidity.readthedocs.io/en/v0.5.11/security-considerations.html#use-the-checks-effects-interactions-pattern[checks-effects-interactions pattern].
      */
     function sendValue(address payable recipient, uint256 amount) internal {
-        require(
-            address(this).balance >= amount,
-            "Address: insufficient balance"
-        );
+        require(address(this).balance >= amount, "Address: insufficient balance");
 
         // solhint-disable-next-line avoid-low-level-calls, avoid-call-value
-        (bool success, ) = recipient.call{value: amount}("");
-        require(
-            success,
-            "Address: unable to send value, recipient may have reverted"
-        );
+        (bool success, ) = recipient.call{ value: amount }("");
+        require(success, "Address: unable to send value, recipient may have reverted");
     }
 
     /**
@@ -870,11 +356,8 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCall(address target, bytes memory data)
-        internal
-        returns (bytes memory)
-    {
-        return functionCall(target, data, "Address: low-level call failed");
+    function functionCall(address target, bytes memory data) internal returns (bytes memory) {
+      return functionCall(target, data, "Address: low-level call failed");
     }
 
     /**
@@ -883,12 +366,8 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
-        return functionCallWithValue(target, data, 0, errorMessage);
+    function functionCall(address target, bytes memory data, string memory errorMessage) internal returns (bytes memory) {
+        return _functionCallWithValue(target, data, 0, errorMessage);
     }
 
     /**
@@ -902,18 +381,8 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value
-    ) internal returns (bytes memory) {
-        return
-            functionCallWithValue(
-                target,
-                data,
-                value,
-                "Address: low-level call with value failed"
-            );
+    function functionCallWithValue(address target, bytes memory data, uint256 value) internal returns (bytes memory) {
+        return functionCallWithValue(target, data, value, "Address: low-level call with value failed");
     }
 
     /**
@@ -922,102 +391,16 @@ library Address {
      *
      * _Available since v3.1._
      */
-    function functionCallWithValue(
-        address target,
-        bytes memory data,
-        uint256 value,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
-        require(
-            address(this).balance >= value,
-            "Address: insufficient balance for call"
-        );
+    function functionCallWithValue(address target, bytes memory data, uint256 value, string memory errorMessage) internal returns (bytes memory) {
+        require(address(this).balance >= value, "Address: insufficient balance for call");
+        return _functionCallWithValue(target, data, value, errorMessage);
+    }
+
+    function _functionCallWithValue(address target, bytes memory data, uint256 weiValue, string memory errorMessage) private returns (bytes memory) {
         require(isContract(target), "Address: call to non-contract");
 
         // solhint-disable-next-line avoid-low-level-calls
-        (bool success, bytes memory returndata) =
-            target.call{value: value}(data);
-        return _verifyCallResult(success, returndata, errorMessage);
-    }
-
-    /**
-     * @dev Same as {xref-Address-functionCall-address-bytes-}[`functionCall`],
-     * but performing a static call.
-     *
-     * _Available since v3.3._
-     */
-    function functionStaticCall(address target, bytes memory data)
-        internal
-        view
-        returns (bytes memory)
-    {
-        return
-            functionStaticCall(
-                target,
-                data,
-                "Address: low-level static call failed"
-            );
-    }
-
-    /**
-     * @dev Same as {xref-Address-functionCall-address-bytes-string-}[`functionCall`],
-     * but performing a static call.
-     *
-     * _Available since v3.3._
-     */
-    function functionStaticCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal view returns (bytes memory) {
-        require(isContract(target), "Address: static call to non-contract");
-
-        // solhint-disable-next-line avoid-low-level-calls
-        (bool success, bytes memory returndata) = target.staticcall(data);
-        return _verifyCallResult(success, returndata, errorMessage);
-    }
-
-    /**
-     * @dev Same as {xref-Address-functionCall-address-bytes-}[`functionCall`],
-     * but performing a delegate call.
-     *
-     * _Available since v3.4._
-     */
-    function functionDelegateCall(address target, bytes memory data)
-        internal
-        returns (bytes memory)
-    {
-        return
-            functionDelegateCall(
-                target,
-                data,
-                "Address: low-level delegate call failed"
-            );
-    }
-
-    /**
-     * @dev Same as {xref-Address-functionCall-address-bytes-string-}[`functionCall`],
-     * but performing a delegate call.
-     *
-     * _Available since v3.4._
-     */
-    function functionDelegateCall(
-        address target,
-        bytes memory data,
-        string memory errorMessage
-    ) internal returns (bytes memory) {
-        require(isContract(target), "Address: delegate call to non-contract");
-
-        // solhint-disable-next-line avoid-low-level-calls
-        (bool success, bytes memory returndata) = target.delegatecall(data);
-        return _verifyCallResult(success, returndata, errorMessage);
-    }
-
-    function _verifyCallResult(
-        bool success,
-        bytes memory returndata,
-        string memory errorMessage
-    ) private pure returns (bytes memory) {
+        (bool success, bytes memory returndata) = target.call{ value: weiValue }(data);
         if (success) {
             return returndata;
         } else {
@@ -1037,403 +420,292 @@ library Address {
     }
 }
 
-pragma solidity ^0.8.0;
+contract Ownable is Context {
+    address private _owner;
 
-/**
- * @dev Library used to query support of an interface declared via {IERC165}.
- *
- * Note that these functions return the actual result of the query: they do not
- * `revert` if an interface is not supported. It is up to the caller to decide
- * what to do in these cases.
- */
-library ERC165Checker {
-    // As per the EIP-165 spec, no interface should ever match 0xffffffff
-    bytes4 private constant _INTERFACE_ID_INVALID = 0xffffffff;
+    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
     /**
-     * @dev Returns true if `account` supports the {IERC165} interface,
+     * @dev Initializes the contract setting the deployer as the initial owner.
      */
-    function supportsERC165(address account) internal view returns (bool) {
-        // Any contract that implements ERC165 must explicitly indicate support of
-        // InterfaceId_ERC165 and explicitly indicate non-support of InterfaceId_Invalid
-        return
-            _supportsERC165Interface(account, type(IERC165).interfaceId) &&
-            !_supportsERC165Interface(account, _INTERFACE_ID_INVALID);
+    constructor () {
+        address msgSender = _msgSender();
+        _owner = msgSender;
+        emit OwnershipTransferred(address(0), msgSender);
     }
 
     /**
-     * @dev Returns true if `account` supports the interface defined by
-     * `interfaceId`. Support for {IERC165} itself is queried automatically.
-     *
-     * See {IERC165-supportsInterface}.
+     * @dev Returns the address of the current owner.
      */
-    function supportsInterface(address account, bytes4 interfaceId)
-        internal
-        view
-        returns (bool)
-    {
-        // query support of both ERC165 as per the spec and support of _interfaceId
-        return
-            supportsERC165(account) &&
-            _supportsERC165Interface(account, interfaceId);
+    function owner() public view returns (address) {
+        return _owner;
     }
 
     /**
-     * @dev Returns a boolean array where each value corresponds to the
-     * interfaces passed in and whether they're supported or not. This allows
-     * you to batch check interfaces for a contract where your expectation
-     * is that some interfaces may not be supported.
-     *
-     * See {IERC165-supportsInterface}.
-     *
-     * _Available since v3.4._
+     * @dev Throws if called by any account other than the owner.
      */
-    function getSupportedInterfaces(
-        address account,
-        bytes4[] memory interfaceIds
-    ) internal view returns (bool[] memory) {
-        // an array of booleans corresponding to interfaceIds and whether they're supported or not
-        bool[] memory interfaceIdsSupported = new bool[](interfaceIds.length);
-
-        // query support of ERC165 itself
-        if (supportsERC165(account)) {
-            // query support of each interface in interfaceIds
-            for (uint256 i = 0; i < interfaceIds.length; i++) {
-                interfaceIdsSupported[i] = _supportsERC165Interface(
-                    account,
-                    interfaceIds[i]
-                );
-            }
-        }
-
-        return interfaceIdsSupported;
+    modifier onlyOwner() {
+        require(_owner == _msgSender(), "Ownable: caller is not the owner");
+        _;
     }
 
     /**
-     * @dev Returns true if `account` supports all the interfaces defined in
-     * `interfaceIds`. Support for {IERC165} itself is queried automatically.
+     * @dev Leaves the contract without owner. It will not be possible to call
+     * `onlyOwner` functions anymore. Can only be called by the current owner.
      *
-     * Batch-querying can lead to gas savings by skipping repeated checks for
-     * {IERC165} support.
-     *
-     * See {IERC165-supportsInterface}.
+     * NOTE: Renouncing ownership will leave the contract without an owner,
+     * thereby removing any functionality that is only available to the owner.
      */
-    function supportsAllInterfaces(
-        address account,
-        bytes4[] memory interfaceIds
-    ) internal view returns (bool) {
-        // query support of ERC165 itself
-        if (!supportsERC165(account)) {
-            return false;
-        }
-
-        // query support of each interface in _interfaceIds
-        for (uint256 i = 0; i < interfaceIds.length; i++) {
-            if (!_supportsERC165Interface(account, interfaceIds[i])) {
-                return false;
-            }
-        }
-
-        // all interfaces supported
-        return true;
+    function renounceOwnership() public virtual onlyOwner {
+        emit OwnershipTransferred(_owner, address(0));
+        _owner = address(0);
     }
 
     /**
-     * @notice Query if a contract implements an interface, does not check ERC165 support
-     * @param account The address of the contract to query for support of an interface
-     * @param interfaceId The interface identifier, as specified in ERC-165
-     * @return true if the contract at account indicates support of the interface with
-     * identifier interfaceId, false otherwise
-     * @dev Assumes that account contains a contract that supports ERC165, otherwise
-     * the behavior of this method is undefined. This precondition can be checked
-     * with {supportsERC165}.
-     * Interface identification is specified in ERC-165.
+     * @dev Transfers ownership of the contract to a new account (`newOwner`).
+     * Can only be called by the current owner.
      */
-    function _supportsERC165Interface(address account, bytes4 interfaceId)
-        private
-        view
-        returns (bool)
-    {
-        bytes memory encodedParams =
-            abi.encodeWithSelector(
-                IERC165(account).supportsInterface.selector,
-                interfaceId
-            );
-        (bool success, bytes memory result) =
-            account.staticcall{gas: 30000}(encodedParams);
-        if (result.length < 32) return false;
-        return success && abi.decode(result, (bool));
+    function transferOwnership(address newOwner) public virtual onlyOwner {
+        require(newOwner != address(0), "Ownable: new owner is the zero address");
+        emit OwnershipTransferred(_owner, newOwner);
+        _owner = newOwner;
     }
 }
 
-pragma solidity ^0.8.0;
 
-/**
- * @dev Implementation of the {IERC165} interface.
- *
- * Contracts that want to implement ERC165 should inherit from this contract and override {supportsInterface} to check
- * for the additional interface id that will be supported. For example:
- *
- * ```solidity
- * function supportsInterface(bytes4 interfaceId) public view virtual override returns (bool) {
- *     return interfaceId == type(MyInterface).interfaceId || super.supportsInterface(interfaceId);
- * }
- * ```
- *
- * Alternatively, {ERC165Storage} provides an easier to use but more expensive implementation.
- */
-abstract contract ERC165 is IERC165 {
-    /**
-     * @dev See {IERC165-supportsInterface}.
-     */
-    function supportsInterface(bytes4 interfaceId)
-        public
-        view
-        virtual
-        override
-        returns (bool)
-    {
-        return interfaceId == type(IERC165).interfaceId;
-    }
-}
 
-pragma solidity ^0.8.0;
-
-/**
- * @title BEP20Operable
- * @dev Implementation of the {IBEP20Operable} interface
- */
-abstract contract BEP20Operable is BEP20, IBEP20Operable, ERC165 {
+contract PilsToken is Context, IERC20, Ownable {
+    using SafeMath for uint256;
     using Address for address;
 
-    /**
-     * @dev See {IERC165-supportsInterface}.
-     */
-    function supportsInterface(bytes4 interfaceId)
-        public
-        view
-        virtual
-        override(ERC165, IERC165)
-        returns (bool)
-    {
-        return
-            interfaceId == type(IBEP20Operable).interfaceId ||
-            super.supportsInterface(interfaceId);
+    mapping (address => uint256) private _rOwned;
+    mapping (address => uint256) private _tOwned;
+    mapping (address => mapping (address => uint256)) private _allowances;
+
+    mapping (address => bool) private _isExcluded;
+    address[] private _excluded;
+   
+    uint256 private constant MAX = ~uint256(0);
+    uint256 private constant _tTotal = 1905197378448410;
+    uint256 private _rTotal = (MAX - (MAX % _tTotal));
+    uint256 private _tFeeTotal;
+
+    string private _name = 'PilsToken';
+    string private _symbol = 'PILS';
+    uint8 private _decimals = 9;
+
+    constructor () {
+        _rOwned[_msgSender()] = _rTotal;
+        emit Transfer(address(0), _msgSender(), _tTotal);
     }
 
-    /**
-     * @dev Transfer tokens to a specified address and then execute a callback on recipient.
-     * @param recipient The address to transfer to.
-     * @param amount The amount to be transferred.
-     * @return A boolean that indicates if the operation was successful.
-     */
-    function transferAndCall(address recipient, uint256 amount)
-        public
-        virtual
-        override
-        returns (bool)
-    {
-        return transferAndCall(recipient, amount, "");
+    function name() public view returns (string memory) {
+        return _name;
     }
 
-    /**
-     * @dev Transfer tokens to a specified address and then execute a callback on recipient.
-     * @param recipient The address to transfer to
-     * @param amount The amount to be transferred
-     * @param data Additional data with no specified format
-     * @return A boolean that indicates if the operation was successful.
-     */
-    function transferAndCall(
-        address recipient,
-        uint256 amount,
-        bytes memory data
-    ) public virtual override returns (bool) {
-        transfer(recipient, amount);
-        require(
-            _checkAndCallTransfer(_msgSender(), recipient, amount, data),
-            "BEP20Operable: _checkAndCallTransfer reverts"
-        );
+    function symbol() public view returns (string memory) {
+        return _symbol;
+    }
+
+    function decimals() public view returns (uint8) {
+        return _decimals;
+    }
+
+    function totalSupply() public pure override returns (uint256) {
+        return _tTotal;
+    }
+
+    function balanceOf(address account) public view override returns (uint256) {
+        if (_isExcluded[account]) return _tOwned[account];
+        return tokenFromReflection(_rOwned[account]);
+    }
+
+    function transfer(address recipient, uint256 amount) public override returns (bool) {
+        _transfer(_msgSender(), recipient, amount);
         return true;
     }
 
-    /**
-     * @dev Transfer tokens from one address to another and then execute a callback on recipient.
-     * @param sender The address which you want to send tokens from
-     * @param recipient The address which you want to transfer to
-     * @param amount The amount of tokens to be transferred
-     * @return A boolean that indicates if the operation was successful.
-     */
-    function transferFromAndCall(
-        address sender,
-        address recipient,
-        uint256 amount
-    ) public virtual override returns (bool) {
-        return transferFromAndCall(sender, recipient, amount, "");
+    function allowance(address owner, address spender) public view override returns (uint256) {
+        return _allowances[owner][spender];
     }
 
-    /**
-     * @dev Transfer tokens from one address to another and then execute a callback on recipient.
-     * @param sender The address which you want to send tokens from
-     * @param recipient The address which you want to transfer to
-     * @param amount The amount of tokens to be transferred
-     * @param data Additional data with no specified format
-     * @return A boolean that indicates if the operation was successful.
-     */
-    function transferFromAndCall(
-        address sender,
-        address recipient,
-        uint256 amount,
-        bytes memory data
-    ) public virtual override returns (bool) {
-        transferFrom(sender, recipient, amount);
-        require(
-            _checkAndCallTransfer(sender, recipient, amount, data),
-            "BEP20Operable: _checkAndCallTransfer reverts"
-        );
+    function approve(address spender, uint256 amount) public override returns (bool) {
+        _approve(_msgSender(), spender, amount);
         return true;
     }
 
-    /**
-     * @dev Approve spender to transfer tokens and then execute a callback on recipient.
-     * @param spender The address allowed to transfer to
-     * @param amount The amount allowed to be transferred
-     * @return A boolean that indicates if the operation was successful.
-     */
-    function approveAndCall(address spender, uint256 amount)
-        public
-        virtual
-        override
-        returns (bool)
-    {
-        return approveAndCall(spender, amount, "");
-    }
-
-    /**
-     * @dev Approve spender to transfer tokens and then execute a callback on recipient.
-     * @param spender The address allowed to transfer to.
-     * @param amount The amount allowed to be transferred.
-     * @param data Additional data with no specified format.
-     * @return A boolean that indicates if the operation was successful.
-     */
-    function approveAndCall(
-        address spender,
-        uint256 amount,
-        bytes memory data
-    ) public virtual override returns (bool) {
-        approve(spender, amount);
-        require(
-            _checkAndCallApprove(spender, amount, data),
-            "BEP20Operable: _checkAndCallApprove reverts"
-        );
+    function transferFrom(address sender, address recipient, uint256 amount) public override returns (bool) {
+        _transfer(sender, recipient, amount);
+        _approve(sender, _msgSender(), _allowances[sender][_msgSender()].sub(amount, "ERC20: transfer amount exceeds allowance"));
         return true;
     }
 
-    /**
-     * @dev Internal function to invoke `onTransferReceived` on a target address
-     *  The call is not executed if the target address is not a contract
-     * @param sender address Representing the previous owner of the given token value
-     * @param recipient address Target address that will receive the tokens
-     * @param amount uint256 The amount mount of tokens to be transferred
-     * @param data bytes Optional data to send along with the call
-     * @return whether the call correctly returned the expected magic value
-     */
-    function _checkAndCallTransfer(
-        address sender,
-        address recipient,
-        uint256 amount,
-        bytes memory data
-    ) internal virtual returns (bool) {
-        if (!recipient.isContract()) {
-            return false;
+    function increaseAllowance(address spender, uint256 addedValue) public virtual returns (bool) {
+        _approve(_msgSender(), spender, _allowances[_msgSender()][spender].add(addedValue));
+        return true;
+    }
+
+    function decreaseAllowance(address spender, uint256 subtractedValue) public virtual returns (bool) {
+        _approve(_msgSender(), spender, _allowances[_msgSender()][spender].sub(subtractedValue, "ERC20: decreased allowance below zero"));
+        return true;
+    }
+
+    function isExcluded(address account) public view returns (bool) {
+        return _isExcluded[account];
+    }
+
+    function totalFees() public view returns (uint256) {
+        return _tFeeTotal;
+    }
+
+    function reflect(uint256 tAmount) public {
+        address sender = _msgSender();
+        require(!_isExcluded[sender], "Excluded addresses cannot call this function");
+        (uint256 rAmount,,,,) = _getValues(tAmount);
+        _rOwned[sender] = _rOwned[sender].sub(rAmount);
+        _rTotal = _rTotal.sub(rAmount);
+        _tFeeTotal = _tFeeTotal.add(tAmount);
+    }
+
+    function reflectionFromToken(uint256 tAmount, bool deductTransferFee) public view returns(uint256) {
+        require(tAmount <= _tTotal, "Amount must be less than supply");
+        if (!deductTransferFee) {
+            (uint256 rAmount,,,,) = _getValues(tAmount);
+            return rAmount;
+        } else {
+            (,uint256 rTransferAmount,,,) = _getValues(tAmount);
+            return rTransferAmount;
         }
-        bytes4 retval =
-            IBEP20OperableReceiver(recipient).onTransferReceived(
-                _msgSender(),
-                sender,
-                amount,
-                data
-            );
-        return (retval ==
-            IBEP20OperableReceiver(recipient).onTransferReceived.selector);
     }
 
-    /**
-     * @dev Internal function to invoke `onApprovalReceived` on a target address
-     *  The call is not executed if the target address is not a contract
-     * @param spender address The address which will spend the funds
-     * @param amount uint256 The amount of tokens to be spent
-     * @param data bytes Optional data to send along with the call
-     * @return whether the call correctly returned the expected magic value
-     */
-    function _checkAndCallApprove(
-        address spender,
-        uint256 amount,
-        bytes memory data
-    ) internal virtual returns (bool) {
-        if (!spender.isContract()) {
-            return false;
+    function tokenFromReflection(uint256 rAmount) public view returns(uint256) {
+        require(rAmount <= _rTotal, "Amount must be less than total reflections");
+        uint256 currentRate =  _getRate();
+        return rAmount.div(currentRate);
+    }
+
+    function excludeAccount(address account) external onlyOwner() {
+        require(!_isExcluded[account], "Account is already excluded");
+        if(_rOwned[account] > 0) {
+            _tOwned[account] = tokenFromReflection(_rOwned[account]);
         }
-        bytes4 retval =
-            IBEP20OperableSpender(spender).onApprovalReceived(
-                _msgSender(),
-                amount,
-                data
-            );
-        return (retval ==
-            IBEP20OperableSpender(spender).onApprovalReceived.selector);
+        _isExcluded[account] = true;
+        _excluded.push(account);
     }
-}
 
-pragma solidity ^0.8.0;
-
-/**
- * @title TokenRecover
- * @dev Allow to recover any BEP20 sent into the contract for error
- */
-contract TokenRecover is Ownable {
-    /**
-     * @dev Remember that only owner can call so be careful when use on contracts generated from other contracts.
-     * @param tokenAddress The token contract address
-     * @param tokenAmount Number of tokens to be sent
-     */
-    function recoverBEP20(address tokenAddress, uint256 tokenAmount)
-        public
-        onlyOwner
-    {
-        IBEP20(tokenAddress).transfer(owner(), tokenAmount);
+    function includeAccount(address account) external onlyOwner() {
+        require(_isExcluded[account], "Account is already excluded");
+        for (uint256 i = 0; i < _excluded.length; i++) {
+            if (_excluded[i] == account) {
+                _excluded[i] = _excluded[_excluded.length - 1];
+                _tOwned[account] = 0;
+                _isExcluded[account] = false;
+                _excluded.pop();
+                break;
+            }
+        }
     }
-}
 
-pragma solidity ^0.8.0;
+    function _approve(address owner, address spender, uint256 amount) private {
+        require(owner != address(0), "ERC20: approve from the zero address");
+        require(spender != address(0), "ERC20: approve to the zero address");
 
-interface IPayable {
-    function pay(string memory serviceName) external payable;
-}
-
-/**
- * @title ServicePayer
- * @dev Implementation of the ServicePayer
- */
-abstract contract ServicePayer {
-    constructor(address payable receiver, string memory serviceName) payable {
-        IPayable(receiver).pay{value: msg.value}(serviceName);
+        _allowances[owner][spender] = amount;
+        emit Approval(owner, spender, amount);
     }
-}
 
-pragma solidity ^0.8.0;
+    function _transfer(address sender, address recipient, uint256 amount) private {
+        require(sender != address(0), "ERC20: transfer from the zero address");
+        require(recipient != address(0), "ERC20: transfer to the zero address");
+        require(amount > 0, "Transfer amount must be greater than zero");
+        if (_isExcluded[sender] && !_isExcluded[recipient]) {
+            _transferFromExcluded(sender, recipient, amount);
+        } else if (!_isExcluded[sender] && _isExcluded[recipient]) {
+            _transferToExcluded(sender, recipient, amount);
+        } else if (!_isExcluded[sender] && !_isExcluded[recipient]) {
+            _transferStandard(sender, recipient, amount);
+        } else if (_isExcluded[sender] && _isExcluded[recipient]) {
+            _transferBothExcluded(sender, recipient, amount);
+        } else {
+            _transferStandard(sender, recipient, amount);
+        }
+    }
 
-/**
- * @title PilsToken
- * @dev Implementation of the PilsToken
- */
-contract PilsToken is BEP20Burnable, BEP20Operable, TokenRecover {
-    constructor(
-        string memory name,
-        string memory symbol,
-        uint8 decimals,
-        uint256 totalSupply
-    ) payable BEP20(name, symbol) {
-        _setupDecimals(decimals);
-        _mint(_msgSender(), totalSupply);
+    function _transferStandard(address sender, address recipient, uint256 tAmount) private {
+        (uint256 rAmount, uint256 rTransferAmount, uint256 rFee, uint256 tTransferAmount, uint256 tFee) = _getValues(tAmount);
+        _rOwned[sender] = _rOwned[sender].sub(rAmount);
+        _rOwned[recipient] = _rOwned[recipient].add(rTransferAmount);       
+        _reflectFee(rFee, tFee);
+        emit Transfer(sender, recipient, tTransferAmount);
+    }
+
+    function _transferToExcluded(address sender, address recipient, uint256 tAmount) private {
+        (uint256 rAmount, uint256 rTransferAmount, uint256 rFee, uint256 tTransferAmount, uint256 tFee) = _getValues(tAmount);
+        _rOwned[sender] = _rOwned[sender].sub(rAmount);
+        _tOwned[recipient] = _tOwned[recipient].add(tTransferAmount);
+        _rOwned[recipient] = _rOwned[recipient].add(rTransferAmount);           
+        _reflectFee(rFee, tFee);
+        emit Transfer(sender, recipient, tTransferAmount);
+    }
+
+    function _transferFromExcluded(address sender, address recipient, uint256 tAmount) private {
+        (uint256 rAmount, uint256 rTransferAmount, uint256 rFee, uint256 tTransferAmount, uint256 tFee) = _getValues(tAmount);
+        _tOwned[sender] = _tOwned[sender].sub(tAmount);
+        _rOwned[sender] = _rOwned[sender].sub(rAmount);
+        _rOwned[recipient] = _rOwned[recipient].add(rTransferAmount);   
+        _reflectFee(rFee, tFee);
+        emit Transfer(sender, recipient, tTransferAmount);
+    }
+
+    function _transferBothExcluded(address sender, address recipient, uint256 tAmount) private {
+        (uint256 rAmount, uint256 rTransferAmount, uint256 rFee, uint256 tTransferAmount, uint256 tFee) = _getValues(tAmount);
+        _tOwned[sender] = _tOwned[sender].sub(tAmount);
+        _rOwned[sender] = _rOwned[sender].sub(rAmount);
+        _tOwned[recipient] = _tOwned[recipient].add(tTransferAmount);
+        _rOwned[recipient] = _rOwned[recipient].add(rTransferAmount);        
+        _reflectFee(rFee, tFee);
+        emit Transfer(sender, recipient, tTransferAmount);
+    }
+
+    function _reflectFee(uint256 rFee, uint256 tFee) private {
+        _rTotal = _rTotal.sub(rFee);
+        _tFeeTotal = _tFeeTotal.add(tFee);
+    }
+
+    function _getValues(uint256 tAmount) private view returns (uint256, uint256, uint256, uint256, uint256) {
+        (uint256 tTransferAmount, uint256 tFee) = _getTValues(tAmount);
+        uint256 currentRate =  _getRate();
+        (uint256 rAmount, uint256 rTransferAmount, uint256 rFee) = _getRValues(tAmount, tFee, currentRate);
+        return (rAmount, rTransferAmount, rFee, tTransferAmount, tFee);
+    }
+
+    function _getTValues(uint256 tAmount) private pure returns (uint256, uint256) {
+        uint256 tFee = tAmount.div(100).mul(5);
+        uint256 tTransferAmount = tAmount.sub(tFee);
+        return (tTransferAmount, tFee);
+    }
+
+    function _getRValues(uint256 tAmount, uint256 tFee, uint256 currentRate) private pure returns (uint256, uint256, uint256) {
+        uint256 rAmount = tAmount.mul(currentRate);
+        uint256 rFee = tFee.mul(currentRate);
+        uint256 rTransferAmount = rAmount.sub(rFee);
+        return (rAmount, rTransferAmount, rFee);
+    }
+
+    function _getRate() private view returns(uint256) {
+        (uint256 rSupply, uint256 tSupply) = _getCurrentSupply();
+        return rSupply.div(tSupply);
+    }
+
+    function _getCurrentSupply() private view returns(uint256, uint256) {
+        uint256 rSupply = _rTotal;
+        uint256 tSupply = _tTotal;      
+        for (uint256 i = 0; i < _excluded.length; i++) {
+            if (_rOwned[_excluded[i]] > rSupply || _tOwned[_excluded[i]] > tSupply) return (_rTotal, _tTotal);
+            rSupply = rSupply.sub(_rOwned[_excluded[i]]);
+            tSupply = tSupply.sub(_tOwned[_excluded[i]]);
+        }
+        if (rSupply < _rTotal.div(_tTotal)) return (_rTotal, _tTotal);
+        return (rSupply, tSupply);
     }
 }
