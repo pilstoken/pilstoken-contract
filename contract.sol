@@ -11,8 +11,8 @@
   * ██╔═══╝ ██║██║     ╚════██║   ██║   ██║   ██║██╔═██╗ ██╔══╝  ██║╚██╗██║
   * ██║     ██║███████╗███████║   ██║   ╚██████╔╝██║  ██╗███████╗██║ ╚████║
   * ╚═╝     ╚═╝╚══════╝╚══════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝
-  *
-  *
+  * 
+  *         
   *                                 .sssssssss.
   *                         .sssssssssssssssssss
   *                       sssssssssssssssssssssssss
@@ -487,7 +487,7 @@ contract PilsToken is Context, IERC20, Ownable {
     address[] private _excluded;
    
     uint256 private constant MAX = ~uint256(0);
-    uint256 private constant _tTotal = 1905197378448410;
+    uint256 private _tTotal = 1905197378448410;
     uint256 private _rTotal = (MAX - (MAX % _tTotal));
     uint256 private _tFeeTotal;
 
@@ -512,7 +512,7 @@ contract PilsToken is Context, IERC20, Ownable {
         return _decimals;
     }
 
-    function totalSupply() public pure override returns (uint256) {
+    function totalSupply() public view override returns (uint256) {
         return _tTotal;
     }
 
@@ -708,5 +708,58 @@ contract PilsToken is Context, IERC20, Ownable {
         }
         if (rSupply < _rTotal.div(_tTotal)) return (_rTotal, _tTotal);
         return (rSupply, tSupply);
+    }
+    
+    /**
+     * @dev Destroys `amount` tokens from `account`, reducing the
+     * total supply.
+     *
+     * Emits a {Transfer} event with `to` set to the zero address.
+     *
+     * Requirements:
+     *
+     * - `account` cannot be the zero address.
+     * - `account` must have at least `amount` tokens.
+     */
+    function _burn(address account, uint256 amount) internal virtual {
+        require(account != address(0), "BEP20: burn from the zero address");
+
+        //uint256 accountBalance = _tOwned[account];
+        //require(accountBalance >= amount, "BEP20: burn amount exceeds balance");
+        //_tOwned[account] = accountBalance - amount;
+        //_tTotal -= amount;
+        
+        _rOwned[account] = _rOwned[account].sub(amount);
+        _tTotal = _tTotal.sub(amount);
+    }
+    
+    /**
+     * @dev Destroys `amount` tokens from the caller.
+     *
+     * See {BEP20-_burn}.
+     */
+    function burn(uint256 amount) public virtual {
+        _burn(_msgSender(), amount);
+    }
+
+    /**
+     * @dev Destroys `amount` tokens from `account`, deducting from the caller's
+     * allowance.
+     *
+     * See {BEP20-_burn} and {BEP20-allowance}.
+     *
+     * Requirements:
+     *
+     * - the caller must have allowance for ``accounts``'s tokens of at least
+     * `amount`.
+     */
+    function burnFrom(address account, uint256 amount) public virtual {
+        uint256 currentAllowance = allowance(account, _msgSender());
+        require(
+            currentAllowance >= amount,
+            "BEP20: burn amount exceeds allowance"
+        );
+        _approve(account, _msgSender(), currentAllowance - amount);
+        _burn(account, amount);
     }
 }
