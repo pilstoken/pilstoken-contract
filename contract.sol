@@ -487,9 +487,10 @@ contract PilsToken is Context, IERC20, Ownable {
     address[] private _excluded;
    
     uint256 private constant MAX = ~uint256(0);
-    uint256 private _tTotal = 1905197378448410;
+    uint256 private _tTotal = 1905197378448410; // ~ 1.9M PILS
     uint256 private _rTotal = (MAX - (MAX % _tTotal));
     uint256 private _tFeeTotal;
+    uint256 private _maxTransaction = 20000000000000; // 20k PILS
 
     string private _name = 'PilsToken';
     string private _symbol = 'PILS';
@@ -619,6 +620,11 @@ contract PilsToken is Context, IERC20, Ownable {
         require(sender != address(0), "ERC20: transfer from the zero address");
         require(recipient != address(0), "ERC20: transfer to the zero address");
         require(amount > 0, "Transfer amount must be greater than zero");
+        
+        if(!_isExcluded[sender]) {
+            require(amount <= _maxTransaction, "Transfer amount must be less than max transaction amount");
+        }
+        
         if (_isExcluded[sender] && !_isExcluded[recipient]) {
             _transferFromExcluded(sender, recipient, amount);
         } else if (!_isExcluded[sender] && _isExcluded[recipient]) {
