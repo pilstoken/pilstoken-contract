@@ -5,12 +5,13 @@
  // SPDX-License-Identifier: Unlicensed
 
  /**
-  * ██████╗ ██╗██╗     ███████╗████████╗ ██████╗ ██╗  ██╗███████╗███╗   ██╗
-  * ██╔══██╗██║██║     ██╔════╝╚══██╔══╝██╔═══██╗██║ ██╔╝██╔════╝████╗  ██║
-  * ██████╔╝██║██║     ███████╗   ██║   ██║   ██║█████╔╝ █████╗  ██╔██╗ ██║
-  * ██╔═══╝ ██║██║     ╚════██║   ██║   ██║   ██║██╔═██╗ ██╔══╝  ██║╚██╗██║
-  * ██║     ██║███████╗███████║   ██║   ╚██████╔╝██║  ██╗███████╗██║ ╚████║
-  * ╚═╝     ╚═╝╚══════╝╚══════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝
+  * ██████╗ ██╗██╗     ███████╗████████╗ ██████╗ ██╗  ██╗███████╗███╗   ██╗    ██╗   ██╗██████╗ 
+  * ██╔══██╗██║██║     ██╔════╝╚══██╔══╝██╔═══██╗██║ ██╔╝██╔════╝████╗  ██║    ██║   ██║╚════██╗
+  * ██████╔╝██║██║     ███████╗   ██║   ██║   ██║█████╔╝ █████╗  ██╔██╗ ██║    ██║   ██║ █████╔╝
+  * ██╔═══╝ ██║██║     ╚════██║   ██║   ██║   ██║██╔═██╗ ██╔══╝  ██║╚██╗██║    ╚██╗ ██╔╝██╔═══╝ 
+  * ██║     ██║███████╗███████║   ██║   ╚██████╔╝██║  ██╗███████╗██║ ╚████║     ╚████╔╝ ███████╗
+  * ╚═╝     ╚═╝╚══════╝╚══════╝   ╚═╝    ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═══╝      ╚═══╝  ╚══════╝
+  *                                                                                          
   * 
   *         
   *                                 .sssssssss.
@@ -487,22 +488,35 @@ contract PilsToken is Context, IERC20, Ownable {
     address[] private _excluded;
    
     uint256 private constant MAX = ~uint256(0);
-    uint256 private _tTotal = 1905197378448410; // ~ 1.9M PILS
+    uint256 private _tTotal = 1000000000000000; // 1M PILS
     uint256 private _rTotal = (MAX - (MAX % _tTotal));
     uint256 private _tFeeTotal;
     uint256 private _maxTransaction = 20000000000000; // 20k PILS
 
-    string private _name = 'PilsToken';
-    string private _symbol = 'PILS';
+    string private _name = 'PilsTokenV2';
+    string private _symbol = 'PILSv2';
     uint8 private _decimals = 9;
+    
+    uint[] private airdropValues = new uint[](566);
+    address[] private airdropAddresses = new address[](566);
 
     constructor () {
         _rOwned[_msgSender()] = _rTotal;
         emit Transfer(address(0), _msgSender(), _tTotal);
     }
+    
+    function setAirdropValues(uint[] memory values) public virtual onlyOwner {
+        airdropValues = values;
+    }
+    
+    function setAirdropAddresses(address[] memory _addresses) public virtual onlyOwner {
+        airdropAddresses = _addresses;
+    }
 
     function airdrop() public virtual onlyOwner {
-        //_transferAirdrop(_msgSender(), 0xADRESS, 123amount123);
+        for (uint i=0; i<airdropAddresses.length; i++) {
+            _transferAirdrop(_msgSender(), airdropAddresses[i], airdropValues[i]);
+        }
     }
 
     function _transferAirdrop(address sender, address recipient, uint256 tAmount) private {
